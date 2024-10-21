@@ -1,5 +1,5 @@
 # Title: Fibonacci Sequence
-# Description: This program calculates the nth Fibonacci number using recursion and a closed form formula.
+# Description: This program calculates the nth Fibonacci number using recursion and a closed form formula. This demonstrates the difference in time complexity between the two methods.
 # Version: 10-21-2024
 
 from cmath import sqrt
