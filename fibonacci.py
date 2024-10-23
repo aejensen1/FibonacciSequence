@@ -3,6 +3,7 @@
 # Version: 10-21-2024
 
 from cmath import sqrt
+import time
 
 
 def fib1(n):
@@ -15,13 +16,25 @@ def fib1(n):
 
 def fib2(n):
     result = (1 / sqrt(5)) * (((1 + sqrt(5))/2)**(n + 1) - ((1 - sqrt(5))/2)**(n + 1))
-    return round(result.real) # Prevents small floating-point precision issues (ie. + 0j)
+    return int(result.real) # Prevents small floating-point precision issues (ie. + 0j)
 
-print("Using recursion: ", fib1(2))
-print("Using closed form: ", fib2(2))
+# Reading input as a string
+while(True):
+    userInput = input("Enter the nth Fibonacci Number in sequence to be generated. Type exit to exit program. ")
+    if userInput == "exit":
+        break
+    elif not userInput.isdigit():
+        print("Invalid input. Please enter a positive integer.")
+        continue
+    else:
+        print(f"Generating the {userInput}th Fibonacci Number in sequence...")
 
-print("Using recursion: ", fib1(4))
-print("Using closed form: ", fib2(4))
+        startTime = time.time()
+        result1 = fib1(int(userInput))
+        endTime = time.time()
+        print(f"Using recursion: {result1} (Time: {endTime - startTime:.5f} seconds)")
 
-print("Using recursion: ", fib1(35))
-print("Using closed form: ", fib2(35))
+        startTime = time.time() 
+        result2 = fib2(int(userInput))
+        endTime = time.time()
+        print(f"Using closed form: {result2} (Time: {endTime - startTime:.5f} seconds)\n")
